@@ -14,6 +14,7 @@ export const IncomeExpenses = () => {
                                         transaction.amount*dollarRate
                                         :transaction.amount*euroRate
                                         );
+                                        
     //Calculate the income 
         const income = amounts
         .filter(item => item > 0)

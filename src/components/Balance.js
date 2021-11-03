@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
-export const Balance = () => {
+export const Balance =React.memo(() => {
     const {currency, transactions } = useContext(GlobalContext)
     const defaultCurrency='₪'
     const dollarSign='$'
@@ -23,4 +23,4 @@ export const Balance = () => {
             <h1 className={total<0?'minus':'plus'}>{total<0?`${total} ${currency}`:`${currency} ${total}`}</h1>
         </>
     )
-}
+})

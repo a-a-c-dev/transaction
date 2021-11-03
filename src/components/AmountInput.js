@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const AmountInput = ({amount, validAmount, amountRequired, handleChange})=>{
+export const AmountInput =React.memo(({amount, validAmount, amountRequired, handleChange})=>{
     return(
         <div>
             <label htmlFor="amount">סכום</label>
@@ -11,4 +11,4 @@ export const AmountInput = ({amount, validAmount, amountRequired, handleChange})
 
     )
 
-}
+})

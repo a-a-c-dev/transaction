@@ -2,7 +2,7 @@ import React,{useEffect,useState,useContext} from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
 
-export  const Currency = () => {
+export  const Currency =React.memo(() => {
     const [selectionValue,setSelectionValue] = useState('₪')
     const { changeCurrency } = useContext(GlobalContext);
     const handleSelectChange = event => {
@@ -22,4 +22,4 @@ export  const Currency = () => {
             </select>
         </div>
     )
-}
+})

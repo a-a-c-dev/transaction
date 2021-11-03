@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import {Transaction} from './Transaction';
-import {Currency} from './Currency';
 
-export const TransactionList = () => {
+export const TransactionList =React.memo(() => {
     const {transactions} = useContext(GlobalContext);
     return(
         <>
@@ -15,4 +14,4 @@ export const TransactionList = () => {
             </ul>
         </>
     )
-}
+})

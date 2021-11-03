@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const TextInput = ({text, validText, textRequired, handleChange})=>{
+export const TextInput =React.memo(({text, validText, textRequired, handleChange})=>{
     return(
         <div>
             <label htmlFor="text">שם עסקה</label>
@@ -9,4 +9,4 @@ export const TextInput = ({text, validText, textRequired, handleChange})=>{
         </div>
     )
 
-}
+})

@@ -1,9 +1,9 @@
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext,useCallback} from 'react';
 import {TextInput} from './TextInput';
 import {AmountInput} from './AmountInput';
 import { GlobalContext } from '../context/GlobalState';
 
-export const AddTransaction = () => {
+export const AddTransaction =React.memo(() => {
 
     const [text,setText] = useState('');
     const [amount, setAmount] = useState(0);
@@ -13,7 +13,7 @@ export const AddTransaction = () => {
     const { addTransaction,currency } = useContext(GlobalContext);
 
         
-    const fieldIsValid = () => {
+    const fieldIsValid = useCallback( () => {
         const errors = {};
         const textPattern = /^[\u0591-\u05F4\s]+$/gi
         if (!text) errors.textRequired = "*שם עסקה הוא שדה חובה";
@@ -22,10 +22,12 @@ export const AddTransaction = () => {
         if(amount.length>8) errors.validAmount = "*אנא הכנס סכום עד שמונה ספרות";
         setErrors(errors);
         return Object.keys(errors).length === 0
-    };
+    },[text, amount]);
     const handleChange = e =>{
         const {name,value} = e.target
-        name==="text"?setText(value):setAmount(value)
+        name==="text"?
+        setText(value)
+        :setAmount(value)
     }
     const onSubmit = e => {
         e.preventDefault();
@@ -51,4 +53,4 @@ export const AddTransaction = () => {
 
         </>
     )
-}
+})
